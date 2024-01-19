@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Quantity Counter</title>
+    <style>
+        .product-card{
+            width: 300px;
+            border: 1px solid gray;
+            display: block;
+            margin: 50px auto;
+            box-shadow: 0 o 10px rgba(0,0,0,0.3);
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 0 20px;
+        }
+
+        .product-img{
+            height: 200px;
+            display: block;
+            margin: 10px auto;
+        }
+        .product-title{
+            font-size: 25px;
+            text-align: center;
+            color: red;
+        }
+        .product-description{
+            font-weight: bold;
+        }
+        .product-price{
+            font-size: 18px;
+            font-weight: bold;
+            color: blueviolet;
+            
+        }
+        .btn-add-cart{
+            display: block;
+            margin: 30px auto;
+            font-size: 20px;
+            padding: 5px 30px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 50x;
+        }
+        .quantity-container{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .btn-quantity{
+            width: 40px;
+            cursor: pointer;
+        }
+        .product-quantity{
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-card">
+        <img src="mobile.jpg" class="product-img" alt="">
+        <h1 class="product-title">Apple iPhone 13 (128GB)</h1>
+        <p class="product-description">
+            Advanced dual-camera system with 12MP Wide and Ultra Wide cameras; Photographic Styles, Smart HDR 4, Night mode, 4K Dolby Vision HDR recording
+        </p>
+        <p class="product-price">Price: ₹51,499</p>
+
+        <div class="quantity-container">
+            <img src="minus.png" alt="" class="btn-quantity" onclick="decreaseQuantity()"/>
+
+            <span class="product-quantity" id="quantity-text">1</span>
+
+            <img src="plus.png" alt="" class="btn-quantity" onclick="increaseQuantity()"/>
+        </div>
+
+        <button type="button" class="btn-add-cart">
+           Add To Cart
+        </button>
+
+    </div>
+    <script>
+        const quantityElement = document.getElementById("quantity-text");
+
+        function increaseQuantity(){
+            let quantity = parseInt(quantityElement.innerText);
+            if(quantity<10){
+                quantityElement.innerText = ++quantity;
+            }else{
+                alert("You can't add more than 10 items")
+            }
+           
+        }
+        function decreaseQuantity(){
+            let quantity = parseInt(quantityElement.innerText);
+
+            if(quantity>1){
+                quantityElement.innerText = --quantity;
+            }else{
+                alert("You can't add less than 1 item")
+            }
+        
+        }
+    </script>
+</body>
+</html>
